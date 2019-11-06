@@ -5,9 +5,13 @@ from django.views.generic import TemplateView #base class for a generic view
 
 # Create your views here.
 
-class homePageView(TemplateView):
+class HomePageView(TemplateView):
     '''Inherit from the generic TemplateView to use an external HTML template '''
     template_name = 'pages/home.html'
+
+class AboutPageView(TemplateView):
+    '''Inherit from the generic TemplateView to use an external HTML template '''
+    template_name = 'pages/about.html'
     
 #def homePageView(request):
    # ''' This function will respond to an HTTP request and return an HttpRequest object.'''
