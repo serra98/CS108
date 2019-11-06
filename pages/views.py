@@ -11,16 +11,16 @@ def homePageView(request):
   
 
     s = '''
-    <html>
-    <head> 
-        <title>Hello,world!</title>
-    </head>
-    <body>
-    <h1>Hello,world! </h1>
-    Welcome to our first Django web application! 
-    <p> 
+<html>
+<head> 
+    <title>Hello,world!</title>
+</head>
+<body>
+<h1>Hello,world! </h1>
+Welcome to our first Django web application! 
+<p> 
 
-    </body>
-    </html>
+</body>
+</html>
     '''
-      return HttpResponse('Hello, world!')
+    return HttpResponse(s)
