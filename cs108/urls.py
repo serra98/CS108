@@ -18,5 +18,6 @@ from django.urls import path, include #new
 
 urlpatterns = [
     path('admin/', admin.site.urls), #built-in django admin application
-    path('',include('pages.urls')), #include the URLS from our pages.url 
+    path('pages/',include('pages.urls')), #include the URLS from our pages.url 
+    path('mini_fb/',include('mini_fb.urls')),#include the URLS from our mini_fb.url
 ]

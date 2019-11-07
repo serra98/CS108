@@ -1,7 +1,7 @@
 # pages/urls.py
 
 from django.urls import path 
-from .views import HomePageView , AboutPageView # our class definition
+from .views import HomePageView , AboutPageView 
 
 urlpatterns = [
     #map the URL to the function homePageView
