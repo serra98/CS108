@@ -6,7 +6,7 @@
 <!-- scriptlet code to display the value of the variable 'all_quotes_list' -->
 
 <ul>
-    {{ all_quotes_list}}
+    {{% for quotes in all_quotes_list %}}
     <li> {{quotes.text}} - {{quotes.author}}
         <img src = "{{quote.image_url}}" style = "
         max-width: 400;"> </li>

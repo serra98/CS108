@@ -18,20 +18,20 @@ class QuotePageView(DetailView):
     context_object_name = 'quote'
 
 
-class RandomQuotePageView(DetailView:
+class RandomQuotePageView(DetailView):
     '''Show one quote selected at random.'''
     model = Quote 
-    template_name = 'quotes/quote.html'
+    emplate_name = 'quotes/quote.html'
     context_object_name = 'quote'
 
     #pick one quote at random 
     def get_object(self):
-    '''return a single instance of a Quote object, selected at random.'''
+        '''return a single instance of a Quote object, selected at random.'''
 
-    # get all quotes 
-    all_quotes = Quote.objects.all() 
+        # get all quotes 
+        all_quotes = Quote.objects.all() 
 
-    #pick one at one time 
-    r = random.randint(0,len(all_quotes) - 1)
-    q = all_quotes(r)
-    return q 
+        #pick one at one time 
+        r = random.randint(0,len(all_quotes) - 1)
+        q = all_quotes[r]
+        return q #return this object
