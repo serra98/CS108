@@ -1,5 +1,6 @@
 <!-- templates/home.html-->
-
+{% extends 'quotes/base.html' %}
+{% block content %}
 
 <h1>Showing all Quotes </h1>
 
@@ -7,8 +8,9 @@
 
 <ul>
     {{% for quotes in all_quotes_list %}}
-    <li> {{quotes.text}} - {{quotes.author}}
-        <img src = "{{quote.image_url}}" style = "
-        max-width: 400;"> </li>
+    <li> "{{quote.text}}" - <a href="{% url 'person' quote.person.pk %}">{{quote.person}}</a>
+        <img src = "{{quote.person.get_random_image}}" style = "max-width: 400;"> </li>
     {% endfor %}
 </ul>
+
+{% endblock %}

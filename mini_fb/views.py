@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from .models import mini_fb 
-from django.views.generic import ListView , DetailView
+from django.views.generic import ListView ,DetailView
 
 class ShowAllProfilesView(ListView):
     '''create a subclass of listview to display all mini_fb'''
@@ -14,5 +14,5 @@ class ShowAllProfilesView(ListView):
 class ShowProfilePageView(DetailView):
     '''show the detail for one mini_fb'''
     model = mini_fb
-    template_name = 'mini_fb/base.html'
-    context_object_name = 'mini_fb'
+    template_name = 'mini_fb/show_profile_page.html'
+    context_object_name = 'profile'

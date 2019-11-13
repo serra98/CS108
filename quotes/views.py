@@ -3,7 +3,11 @@ from django.shortcuts import render
 # Create your views here.
 from .models import Quote 
 from django.views.generic import ListView , DetailView 
+from django.views.generic.edit import CreateView , UpdateView
+from .forms import CreateQuoteForm , UpdateQuoteForm
+
 import random 
+
 
 class HomePageView(ListView):
     '''Create a subclass of ListView to display all quotes.'''
@@ -35,3 +39,21 @@ class RandomQuotePageView(DetailView):
         r = random.randint(0,len(all_quotes) - 1)
         q = all_quotes[r]
         return q #return this object
+
+
+class PersonPageView(DetailView):
+    ''' showa ll quotes and all images for one person'''
+    model = Person 
+    template_name = 'quotes/person.html'
+    context_object_name = 'person'
+
+class CreateQuoteView(CreateView):
+    '''A view to create a new quote and save it to the database.'''
+    form_class = CreateQuoteForm 
+    template_name = "quotes/create_quote.html"
+
+class UpdateQuoteView(UpdateView):
+    '''A view to create a new quote and save it to the database.'''
+    form_class = UpdateQuoteForm 
+    template_name = "quotes/create_quote.html"
+    queryset = Quote.objects.all()

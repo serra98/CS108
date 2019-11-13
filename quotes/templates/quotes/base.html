@@ -1,0 +1,14 @@
+<!-- quotes/base.html-->
+<html>
+    <head> <title> Quote Application</title></head>
+<body>
+    <header>
+        <a href = "{% url 'random' %}">Random Quotes</a>
+        <a href = "{% url 'all' %}" > Show All Quotes</a>
+        <a href = "{% url 'create_quote' %}" > create a new Quotes</a>
+    </header>
+    <hr> 
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
