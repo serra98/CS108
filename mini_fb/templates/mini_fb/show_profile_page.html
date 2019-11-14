@@ -13,10 +13,10 @@
 
 <!-- {{mini_fb.profile.get_status_message}}-->
 
-<h3>Status Message</h3>
-<ul> {{profile.get_status_message}} </ul>
+<h3> Status Messages </h3>
 
 <ul>
+
         <table>
                 <colgroup>
                     <col span = "1" style="width: 30%;">
@@ -28,11 +28,15 @@
                     <th>Status</th>
                     <th>Person</th>
                 </tr>
-    
+
+
+                {% for status in profile.get_status_messages %}
                 <tr>
-                    <td> {{profile.get_status_message}} </td>
+                    <td> {{status.timestamp}} </td>
+                    <td> {{status.messages}</td>
+                    <td> {{status.profile}} </td>
                 </tr>
+                {% endfor %}
         </table>
     </ul>
-
 {% endblock %}

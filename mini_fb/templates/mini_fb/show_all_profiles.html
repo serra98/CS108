@@ -36,7 +36,7 @@
 <h3> Status Messages </h3>
 
 <ul>
-    {{profile.get_status_message}} 
+
         <table>
                 <colgroup>
                     <col span = "1" style="width: 30%;">
@@ -50,7 +50,7 @@
                 </tr>
 
 
-                {% for status in profile.get_status_message %}
+                {% for status in all_mini_fb_list.get_status_messages %}
                 <tr>
                     <td> {{status.timestamp}} </td>
                     <td> {{status.messages}</td>
