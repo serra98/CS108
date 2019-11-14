@@ -5,7 +5,7 @@ from .models import Profile
 from django.views.generic import ListView , DetailView
 from django.views.generic.edit import CreateView ,UpdateView
 
-from .forms import CreateProfileForm , UpdateProfileForm , CreateStatusMessageForm
+from .forms import CreateProfileForm , UpdateProfileForm , CreateStatusMessageForm 
 from django.shortcuts import redirect
 from django.urls import reverse
 
@@ -34,27 +34,7 @@ class ShowProfilePageView(DetailView):
         # return this context dictionary
         return context
     
-    def create_status_message(request, pk):
-        '''Process a form submission to post a new status message.'''
-        # find the profile that matches the `pk` in the URL
-        profile = Profile.objects.get(pk=pk)
-
-        # if and only if we are processing a POST request, try to read the data
-        if request.method == 'POST':
-
-            # read the data from this form submission
-            message = request.POST['message']
-
-            # save the new status message object to the database
-            if message:
-
-                sm = StatusMessage()
-                sm.profile = profile
-                sm.message = message
-                sm.save()
-
-        # redirect the user to the show_profile_page view
-        return redirect(reverse('show_profile_page', kwargs={'pk': pk}))
+    
 
 class CreateProfileView(CreateView):
     '''A view to create a new quote and save it to tjhe database'''
@@ -68,3 +48,27 @@ class UpdateProfileView(CreateView):
     form_class = UpdateProfileForm
     template_name = 'mini_fb/update_profile_form.html'
     queryset = Profile.objects.all()
+
+def create_status_message(request, pk):
+    '''
+    Process a form submission to post a new status message.
+    '''
+    # find the profile that matches the `pk` in the URL
+    profile = Profile.objects.get(pk=pk)
+
+    # if and only if we are processing a POST request, try to read the data
+    if request.method == 'POST':
+
+        # read the data from this form submission
+        message = request.POST['message']
+
+        # save the new status message object to the database
+        if message:
+
+            sm = StatusMessage()
+            sm.profile = profile
+            sm.message = message
+            sm.save()
+
+    # redirect the user to the show_profile_page view
+    return redirect(reverse('show_profile_page', kwargs={'pk': pk}))
