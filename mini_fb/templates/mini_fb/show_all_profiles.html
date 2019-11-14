@@ -52,9 +52,11 @@
 
                 {% for status in all_mini_fb_list.get_status_messages %}
                 <tr>
+                    <center>
                     <td> {{status.timestamp}} </td>
                     <td> {{status.messages}</td>
                     <td> {{status.profile}} </td>
+                </center>
                 </tr>
                 {% endfor %}
         </table>

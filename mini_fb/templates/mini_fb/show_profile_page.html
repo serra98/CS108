@@ -32,9 +32,11 @@
 
                 {% for status in profile.get_status_messages %}
                 <tr>
+                    <center>
                     <td> {{status.timestamp}} </td>
                     <td> {{status.message}}</td>
                     <td> {{status.profile}} </td>
+                    </center>
                 </tr>
                 {% endfor %}
         </table>
