@@ -1,7 +1,20 @@
 <!-- templates/show_profile_page.html-->
 
+{% extends 'mini_fb/base.html' %}
+
+{% block content %}
+
 <center>
-<h1> {{mini_fb.first_name}} {{mini_fb.last_name}} </h1>
-<h3> {{mini_fb.home_town}} </h3>
- <img src="{{mini_fb.prof_url}}" style="max-width: 400;">  
+<h1> {{profile.first_name}} {{profile.last_name}} </h1>
+<h3> {{profile.home_town}} </h3>
+ <img src="{{profile.prof_url}}" style="max-width: 400;">  
 </center>
+
+
+<!-- {{mini_fb.profile.get_status_message}}-->
+
+<h3>Status Message</h3>
+<ul>{{profile.get_status_messages}}</ul>
+
+
+{% endblock %}

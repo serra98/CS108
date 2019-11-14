@@ -1,10 +1,11 @@
 <!-- templates/show_all_profiles.html-->
 
-<h1>MiniFacebook</h1>
+{% extends 'mini_fb/base.html' %}
+
+{% block content %}
 <h2>Showing all Profiles</h2>
 
 <!-- scriplet code to display the value of the variables 'all_mini_fb_list'
-{{ all_mini_fb_list }}
 -->
 
 
@@ -22,12 +23,18 @@
                 <th>Image</th>
             </tr>
             {% for mini_fb in all_mini_fb_list %} 
+
             <tr>
-                <td><center> {{mini_fb.first_name}} {{mini_fb.last_name}} </center></td>
+                <td><center> <a href = "{% url 'show_profile_page' mini_fb.pk %}">{{mini_fb.first_name}} {{mini_fb.last_name}}</a> </center></td>
                 <td><center> {{mini_fb.home_town}} </center></td>
-                <td> <img src="{{mini_fb.prof_url}}" style="max-width: 200;">  </td>
+                <td><img src="{{mini_fb.prof_url}}" style="max-width: 200;">  </td>
             </tr>
             {% endfor %}
     </table>
 </ul>
 
+<h3> Status Messages </h3>
+    {% for status in profile.get_status_message %}
+    <ul>{{status.timestamp}} {{status.message}}</ul>
+    {% endfor %}
+{% endblock %}

@@ -1,16 +1,13 @@
 <!-- templates/home.html-->
-{% extends 'quotes/base.html' %}
-{% block content %}
 
 <h1>Showing all Quotes </h1>
 
-<!-- scriptlet code to display the value of the variable 'all_quotes_list' -->
+<!-- scriplet code to display {{all_quotes_list}} -->
 
 <ul>
-    {{% for quotes in all_quotes_list %}}
-    <li> "{{quote.text}}" - <a href="{% url 'person' quote.person.pk %}">{{quote.person}}</a>
-        <img src = "{{quote.person.get_random_image}}" style = "max-width: 400;"> </li>
+    {% for quote in all_quotes_list %}
+    <li> "{{quote.text}}"" - <a href = "{% url 'person' quote.person.pk %}">{{quote.person}}</a> <br>
+        <img src = "{{quote.person.get_random_image}}" style = "max-width: 400;">
+    </li>
     {% endfor %}
 </ul>
-
-{% endblock %}

@@ -1,15 +1,6 @@
 <!-- templates/quote.html-->
-{% extends 'quotes/base.html' %}
-
-{% block content %}
 <center>
-<h1> {{quotes.text}}  </h1>
-
-<h3><a href = "{% url 'person' quote.person.pk %}">{{quotes.person}} </a></h3> <br> 
-<img src = "{{quote.person.get_random_image}}" style = "max-width: 400;"> 
-<p> 
-<a href = "{% url 'update_quote' quote.pk %}" >Update this quote</a>
-</p>
+<h1>{{quote.text}} </h1>
+<h3>- <a href = "{% url 'person' quote.person.pk %}">{{quote.person}}</a></h3>
+        <img src = "{{quote.person.get_random_image}}" style = "max-width: 400;">
 </center>
-
-{% endblock %}

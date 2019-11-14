@@ -1,5 +1,6 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import mini_fb
-admin.site.register(mini_fb)
+from .models import Profile, StatusMessage
+admin.site.register(Profile)
+admin.site.register(StatusMessage)

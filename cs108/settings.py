@@ -38,8 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'pages',
-    'mini_fb',
     'quotes',
+    'mini_fb',
 ]
 
 MIDDLEWARE = [
