@@ -3,7 +3,7 @@
 {% extends 'mini_fb/base.html' %}
 
 {% block content %}
-
+<a href = "{% url 'update_profile' profile.pk %}">Edit this profile</a> 
 <center>
 <h1> {{profile.first_name}} {{profile.last_name}} </h1>
 <h3> {{profile.home_town}} </h3>
@@ -41,4 +41,27 @@
                 {% endfor %}
         </table>
     </ul>
+
+    <h4>Post a status message</h4>
+
+    <form method = 'POST' object = 'create_status_form' action = '/mini_fb/profile/{{profile.pk}}/post_status'>
+        {% csrf_token %}
+        <!-- {{form}} -->
+        <table>
+            {% for field in form %}
+            <tr>
+                <th> {{field.name}}</th>
+                <td> {{field}} </td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <td></td>
+                <td>
+                    <input type = "submit" name = "share!" value ="share!">
+                </td>
+            </tr>
+        </table>
+    </form>
+
 {% endblock %}
+

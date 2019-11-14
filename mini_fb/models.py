@@ -1,6 +1,7 @@
 
 # Create your models here.
 from django.db import models
+from django.urls import reverse #to obtain url 
 
 #Create your models here.
 #first name, last name, email address, and a profile image url 
@@ -26,6 +27,9 @@ class Profile(models.Model):
         result = StatusMessage.objects.filter(profile = self.pk)
         return result
 
+    def get_absolute_url(self):
+        '''return a URL to display this profile object.'''
+        return reverse("show_profile_page",kwargs ={"pk": self.pk})
 
 class StatusMessage(models.Model):
     '''encapsulate the statusmessage'''
