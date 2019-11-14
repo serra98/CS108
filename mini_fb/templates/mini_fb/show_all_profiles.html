@@ -34,7 +34,31 @@
 </ul>
 
 <h3> Status Messages </h3>
-    {% for status in profile.get_status_message %}
-    <ul>{{status.timestamp}} {{status.message}}</ul>
-    {% endfor %}
+
+<ul>
+        <table>
+                <colgroup>
+                    <col span = "1" style="width: 30%;">
+                    <col span = "1" style="width: 45%;">
+                    <col span = "1" style="width: 25%;">
+                </colgroup>
+                <tr>
+                    <th>Time</th>
+                    <th>Status</th>
+                    <th>Person</th>
+                </tr>
+                {% for status in profile.get_status_message %}
+    
+                <tr>
+                    <td> {{status.timestamp}} </td>
+                    <td> {{status.messages}</td>
+                    <td> {{status.profile}} </td>
+                </tr>
+                {% endfor %}
+        </table>
+    </ul>
+
+    <ul>{{profile.get_status_message}} </ul>
+    
+
 {% endblock %}
