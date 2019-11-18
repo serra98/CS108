@@ -1,7 +1,7 @@
 #quotes/urls.py 
 
 from django.urls import path 
-from .views import HomePageView, QuotePageView , RandomQuotePageView  ,PersonPageView , CreateQuoteView , UpdateQuoteView , DeleteQuoteView , add_image#our class definition
+from .views import HomePageView, QuotePageView , RandomQuotePageView  ,PersonPageView , CreateQuoteView , UpdateQuoteView , DeleteQuoteView , add_image #our class definition
 
 urlpatterns = [
     # map the URL (empty string) to the view 

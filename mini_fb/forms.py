@@ -25,3 +25,4 @@ class CreateStatusMessageForm(forms.ModelForm):
         '''associate this form with the statusMessage model.'''
         model = StatusMessage
         fields = ['message'] #whichfields
+        

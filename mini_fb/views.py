@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 # Create your views here.
-from .models import Profile
+from .models import Profile , StatusMessage
 from django.views.generic import ListView , DetailView
 from django.views.generic.edit import CreateView ,UpdateView
 
@@ -72,3 +72,4 @@ def create_status_message(request, pk):
 
     # redirect the user to the show_profile_page view
     return redirect(reverse('show_profile_page', kwargs={'pk': pk}))
+

@@ -44,11 +44,11 @@
 
     <h4>Post a status message</h4>
 
-    <form method = 'POST' object = 'create_status_form' action = '/mini_fb/profile/{{profile.pk}}/post_status'>
+    <form method = 'POST' action = '/mini_fb/profile/{{profile.pk}}/post_status'>
         {% csrf_token %}
         <!-- {{form}} -->
         <table>
-            {% for field in form %}
+            {% for field in create_status_form %}
             <tr>
                 <th> {{field.name}}</th>
                 <td> {{field}} </td>

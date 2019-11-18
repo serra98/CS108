@@ -35,7 +35,7 @@ class StatusMessage(models.Model):
     '''encapsulate the statusmessage'''
 
     #data attributes of a mini_fb:
-    timestamp = models.TimeField(blank = True)
+    timestamp = models.TimeField(blank = True,auto_now = True)
     message = models.TextField(blank = True)
     profile = models.ForeignKey('Profile', on_delete="CASCADE")
 
