@@ -37,9 +37,10 @@ class StatusMessage(models.Model):
     #data attributes of a mini_fb:
     timestamp = models.TimeField(blank = True,auto_now = True)
     message = models.TextField(blank = True)
-    profile = models.ForeignKey('Profile', on_delete="CASCADE")
+    image = models.ImageField(blank = True)
+    profile = models.ForeignKey('Profile', on_delete=models.CASCADE)
 
     def ___str___(self):
         '''return a string representation of this object.'''
-        return '"%s" - %s' % (self.timestamp, self.message)
+        return '"%s" - %s' % (self.profile, self.timestamp, self.message , self.image)
 
