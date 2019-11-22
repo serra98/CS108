@@ -35,6 +35,19 @@ class ShowProfilePageView(DetailView):
         return context
     
     
+class ShowNewsFeedView(DetailView):
+    '''do everything we want withuot overriding any method. '''
+
+    model = Profile 
+    template_name = 'mini_fb/show_news_feed.html'
+    context_object_name = 'profile'
+
+
+class ShowPossibleFriendsView(DetailView):
+    '''will do everything we want, without overriding any methods.'''
+    model = Profile 
+    template_name = 'mini_fb/show_possible_friends.html' 
+    context_object_name = 'profile'
 
 class CreateProfileView(CreateView):
     '''A view to create a new quote and save it to tjhe database'''
@@ -117,4 +130,19 @@ class DeleteStatusMessageView(DeleteView):
 
         return reverse('show_profile_page', kwargs={'pk':profile_pk})
 
+
+def add_friend(request,profile_pk,friend_pk):
+    ''' process the add_friend request, to add a friend for a given profile. '''
+    
+    # find the profile object which is adding the friend and store it into variable 
+    profile = Profile.objects.get(pk=profile_pk)
+
+    #find the profile object of the friend to add, and store it into another variable 
+    friend = Profile.objects.get(pk=friend_pk)
+
+    #add that friend's {rofile into the profile.friends object using the method add.
+    profile.friends.add(friend)
+
+    #return / save the profile object 
+    return redirect(reverse ('show_profile_page', kwargs={'pk':profile_pk}))
 

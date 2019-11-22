@@ -5,7 +5,7 @@
 
 <h2>Update a  profile</h2>
 
-<form method = 'POST'>
+<form method = 'POST'  action="/mini_fb/profile/{{profile.pk}}/update">
     {% csrf_token %}
     <!-- {{form}} -->
     <table>
