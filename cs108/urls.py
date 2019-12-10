@@ -23,6 +23,7 @@ urlpatterns = [
     path('pages/',include('pages.urls')), #include the URLS from our pages.url 
     path('quotes/',include('quotes.urls')), #include the url from our quotes project 
     path('mini_fb/',include('mini_fb.urls')),#include the URLS from our mini_fb.url
+    path('project/',include('project.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT) 

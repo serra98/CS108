@@ -1,0 +1,11 @@
+<!-- templates/show_profile_page.html-->
+
+{% extends 'project/base.html' %}
+
+
+{% block content %}
+
+<h2 style="font-style: oblique;font-size:150px;  background-color: darkred; color:white">  <center> Welcome To BU Tech Rental </center></h2>
+<h4 style = "font-size:70px ; color:brown"><center> CLICK the above navigations to look at the <strong><a style= "color:rgb(97, 23, 23)" href="{% url 'show_all_laptops' %}">list of laptops</a> , <a style= "color:rgb(97, 23, 23)" href="{% url 'rental_page' %}">rental history</a>, and register to rent! </strong> </center></h4>
+
+{% endblock %}
