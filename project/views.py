@@ -2,11 +2,11 @@
 from django.shortcuts import render
 
 # Create your views here.
-from .models import Laptop , Profile
+from .models import Laptop , Student
 from django.views.generic import ListView , DetailView
-from django.views.generic.edit import CreateView ,UpdateView
+from django.views.generic.edit import CreateView ,UpdateView , DeleteView
 
-from .forms import CreateProfileForm , UpdateProfileForm ,CreateReviewForm
+from .forms import CreateStudentForm , UpdateStudentForm 
 from django.shortcuts import redirect
 from django.urls import reverse
 
@@ -24,15 +24,15 @@ class ShowLaptopPageView(DetailView):
     context_object_name = 'laptop'
 
 class ShowAllRentalPageView(ListView):
-    model = Profile 
+    model = Student 
     template_name = 'project/show_all_rental_page.html'
     context_object_name = 'all_rental_list'
 
-class ShowProfilePageView(DetailView):
-    '''show the detail for one profile'''
-    model = Profile 
-    template_name = 'project/show_profile_page.html'
-    context_object_name = 'profile'
+class ShowStudentPageView(DetailView):
+    '''show the detail for one student'''
+    model = Student 
+    template_name = 'project/show_student_page.html'
+    context_object_name = 'student'
 
 class HomePageView(ListView): 
     '''show the homepage'''
@@ -40,43 +40,23 @@ class HomePageView(ListView):
     template_name = 'project/home.html'
     context_object_name = 'home_list'
     
-class CreateProfileView(CreateView):
+class CreateStudentView(CreateView):
     '''A view to create a new quote and save it to tjhe database'''
 
-    form_class = CreateProfileForm
-    template_name = 'project/create_profile_form.html'
+    form_class = CreateStudentForm
+    template_name = 'project/create_student_form.html'
 
-class UpdateProfileView(UpdateView):
+class UpdateStudentView(UpdateView):
     '''A view to update a new quote and save it to tjhe database'''
 
-    form_class = UpdateProfileForm
-    template_name = 'project/update_profile_form.html'
-    queryset = Profile.objects.all()
+    form_class = UpdateStudentForm
+    template_name = 'project/update_student_form.html'
+    queryset = Student.objects.all()
 
-def create_review(request, pk):
-    '''
-    Process a form submission to post a new review
-    '''
-    # find the profile that matches the `pk` in the URL
-    laptop = Laptop.objects.get(pk=pk)
+class DeleteStudentView(DeleteView):
+    '''A view to update a new quote and save it to tjhe database'''
 
-    form = CreateReviewForm(request.POST or None, request.FILES or None)
-
-    # if and only if we are processing a POST request, try to read the data
-    if request.method == 'POST':
-
-        # read the data from this form submission
-        comment = request.POST['comment']
-        #image = request.POST['image']
-
-        # save the new status message object to the database
-        if form.is_valid():
-
-            cr = form.save(commit = False)
-            cr.laptop = laptop
-            cr.save()
-
-
-    # redirect the user to the show_profile_page view
-    return redirect(reverse('show_laptop_page', kwargs={'pk': pk}))
+    template_name = 'project/delete_student.html'
+    queryset = Student.objects.all()
+    success_url = "../../rental"
 

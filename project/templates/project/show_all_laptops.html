@@ -5,7 +5,7 @@
 {% block content %}
 <h1 style="font-style: oblique; background-color: darkred; color:white">BU Tech Rental</h1>
 
-<h2>List of Laptops for Rental</h2>
+<h2 style="font-style: oblique;">List of Laptops for Rental</h2>
 
 <!-- scriplet code to display the value of the variables 'all_laptop_list'
 -->
@@ -20,9 +20,9 @@
                 <col span = "1" style="width: 40%;">
             </colgroup>
             <tr style="background-color: #d34343;">
-                <th style="font-size: x-large;">Image</th>
-                <th style="font-size: x-large;">Model Name</th>
-                <th style="font-size: x-large;">Cost per month</th>
+                <th style="font-size: large;"> <center> Image </center> </th>
+                <th style="font-size: large;"><center>Model Name</center></th>
+                <th style="font-size: large;"><center>Cost Per Month</center></th>
             </tr>
             {% for x in all_laptop_list %} 
 

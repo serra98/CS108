@@ -15,56 +15,5 @@
 
 
 
-<h3> Inquiry/Reviews </h3>
-
-<ul>
-
-        <table>
-                <colgroup>
-                    <col span = "1" style="width: 30%;">
-                    <col span = "1" style="width: 45%;">
-                    <col span = "1" style="width: 25%;">
-                </colgroup>
-                <tr>
-                    <th>Date</th>
-                    <th>Person</th>
-                    <th>Comments</th>
-                </tr>
-
-
-                {% for x in laptop.get_reviews %}
-                <tr>
-                    <center>
-                    <td> {{x.timestamp}} </td>
-                    <td> {{x.person}} </td>
-                    <td> {{x.comment}}</td>
-                    </center>
-                    <!-- <td> <a href = "{% url 'delete_status' profile_pk=profile.pk status_pk=status.pk %}" >Delete</a> </td> -->
-                </tr>
-                {% endfor %}
-        </table>
-    </ul>
-
-    <h4> Post Reviews or Questions here! </h4>
-
-    <form method = 'POST' action = '/project/laptop/{{laptop.pk}}/post_review' enctype="multipart/form-data">
-        {% csrf_token %}
-        <!-- {{form}} -->
-        <table>
-            {% for x in create_review %}
-            <tr>
-                <th> {{x.name}}</th>
-                <td> {{x}} </td>
-            </tr>
-            {% endfor %}
-            <tr>
-                <td></td>
-                <td>
-                    <input type = "submit" name = "share!" value ="share!">
-                </td>
-            </tr>
-        </table>
-    </form>
-
 {% endblock %}
 

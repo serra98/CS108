@@ -23,14 +23,9 @@ class Laptop(models.Model):
         '''return a URL to display this RENTAL PAGE.'''
         return reverse("show_all_rental_page")
 
-    # get reviews/inquiry of this laptop
-    def get_reviews(self):
-        '''return a QuerySet of all messages for this laptop.'''
-        result = Review.objects.filter(laptop = self.pk)
-        return result
 
 
-class Profile(models.Model):
+class Student(models.Model):
     '''encapsulate the idea of a mini_fb:'''
 
     #data attributes of a mini_fb:
@@ -49,19 +44,6 @@ class Profile(models.Model):
 
     def get_absolute_url(self):
         '''return a URL to display this profile object.'''
-        return reverse("show_profile_page",kwargs ={"pk": self.pk})
+        return reverse("show_student_page",kwargs ={"pk": self.pk})
 
 
-
-class Review(models.Model):
-    '''encapsulate the review'''
-
-    #data attributes of a mini_fb:
-    timestamp = models.DateField(default = datetime.now())
-    comment = models.TextField(blank = True)
-    person = models.TextField(blank = True)
-    laptop = models.ForeignKey('Laptop', on_delete=models.CASCADE)
-
-    def ___str___(self):
-        '''return a string representation of this object.'''
-        return '"%s" - %s' % (self.timestamp, self.comment)
