@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'quotes',
     'project',
     'crispy_forms',
-    'mini_fb',
+    'mini_fb'
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
